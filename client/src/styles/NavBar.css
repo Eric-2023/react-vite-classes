@@ -1,0 +1,63 @@
+/* NavBar.css */
+
+.product-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem 2rem;
+    position: relative;
+    background-color: coral;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-link {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-link a:hover {
+    color: #00bcd4;
+}
+
+.navbar-toggler {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .navbar-link {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-link.active {
+        display: flex;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+}

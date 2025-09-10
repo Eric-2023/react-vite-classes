@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from './components/NavBar'
-import Products from './components/Products'
+import Items from './components/Items'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
   return (
    <>
     <NavBar />
-    <Products />
+    <Items />
+    <Footer />
    </>
   )
 }
