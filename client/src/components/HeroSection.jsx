@@ -860,5 +860,90 @@ export default App;
 */
 /*
 useState is a hook provided by react that allows you to add state to functional components. it returns an array with exactly two elements:
+1. the current state value
+2. a function that allows you to update the state value
+
+the syntax is:
+const [stateVariable, setStateVariable] = useState(initialValue);
+stateVariable is the current value of the state.
+setStateVariable is a function that we can use to update the state.
+initialValue is the initial value of the state.
+
+we use state for data that is changing.
+we can use multiple states in a component.
+we can also use objects and arrays as state values.
+when updating state, we should always use the setState function provided by useState.
+we should never mutate the state directly. (e.g., stateVariable = newValue is incorrect)
+when updating state that is an object or array, we should always create a new object or array with the updated values.
+
+example of using useState with an object:
+import React, { useState } from 'react';
+
+function Form() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form submitted:', formData);
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
+            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
+            <button type="submit">Submit</button>
+        </form>
+    );
+}
+
+export default Form;
+
+in this example, we use useState to create a state variable called formData that is an object with two properties: firstName and lastName.
+we also create a handleChange function that updates the formData state whenever an input field changes.
+the handleSubmit function logs the formData state when the form is submitted.
+
+example of using useState with an array:
+import React, { useState } from 'react';
+
+function TodoList() {
+    const [todos, setTodos] = useState([]);
+    const [newTodo, setNewTodo] = useState('');
+
+    const addTodo = () => {
+        setTodos([...todos, newTodo]);
+        setNewTodo('');
+    };
+
+    return (
+        <div>
+            <input type="text" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} placeholder="New Todo" />
+            <button onClick={addTodo}>Add Todo</button>
+            <ul>
+                {todos.map((todo, index) => (
+                    <li key={index}>{todo}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default TodoList;
+
+in this example, we use useState to create a state variable called todos that is an array of todo items.
+we also create a newTodo state variable to hold the value of the new todo item being added.
+the addTodo function adds the new todo item to the todos array and clears the newTodo input field.
+
+by using useState, we can easily manage and update state in our functional components, allowing us to create dynamic and interactive user interfaces.
 
  */
